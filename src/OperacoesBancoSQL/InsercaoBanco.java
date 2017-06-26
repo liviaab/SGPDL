@@ -48,16 +48,16 @@ public class InsercaoBanco {
             // Cria conexao com o banco
             Connection c = conn.getConexaoMySQL();
 
-            String sql = "INSERT INTO RESERVAS (id_Cliente, DATAINICIAL, DATAFINAL, STATUS, CLIENTE,  QUARTO) "
-                    + "VALUES (?,?,?,?,?,?);";
+            String sql = "INSERT INTO RESERVAS ( DATAINICIAL, DATAFINAL, STATUS, CLIENTE,  QUARTO) "
+                    + "VALUES (?,?,?,?,?);";
 
             try (PreparedStatement stmt = c.prepareStatement(sql)) {
-                stmt.setString(1, null);
-                stmt.setString(2, reserva.getDataIncial());
-                stmt.setString(3, reserva.getDataFinal());
-                stmt.setString(4, reserva.getStatus());                
-                stmt.setInt(5, IdCliente);
-                stmt.setInt(6, idQuarto);
+                
+                stmt.setString(1, reserva.getDataIncial());
+                stmt.setString(2, reserva.getDataFinal());
+                stmt.setString(3, reserva.getStatus());                
+                stmt.setInt(4, IdCliente);
+                stmt.setInt(5, idQuarto);
                 stmt.execute();
             }
 
